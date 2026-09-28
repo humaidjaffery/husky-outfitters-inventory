@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Husky Outfitters Inventory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="blossom blossom--top" viewBox="0 0 260 330" aria-hidden="true">
+    <path d="M250 12C170 60 191 136 115 168C72 186 70 248 18 316"/>
+    <path d="M188 80c-43-2-66 16-82 47M119 166c33 5 56 26 71 55M70 231c-23-3-41 5-57 24"/>
+    <g><circle cx="108" cy="126" r="11"/><circle cx="187" cy="81" r="9"/><circle cx="190" cy="221" r="12"/><circle cx="16" cy="255" r="10"/><circle cx="71" cy="230" r="8"/></g>
+  </svg>
+
+  <aside class="rail">
+    <a class="brand" href="#" aria-label="Husky Outfitters home"><span>H</span><strong>Husky<br>Outfitters</strong></a>
+    <nav aria-label="View selector">
+      <button class="rail-link is-active" data-view="staff"><span>Staff</span></button>
+      <button class="rail-link" data-view="student"><span>Student</span></button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="staff-view" class="view is-visible" aria-labelledby="staff-title">
+      <header class="page-head">
+        <div><p class="context">Husky Outfitters · staff desk</p><h1 id="staff-title">Inventory, without the hunt.</h1></div>
+        <button class="button button--primary" id="open-checkout">New checkout</button>
+      </header>
+
+      <div class="summary-strip" aria-label="Inventory summary">
+        <div><strong>42</strong><span>Items in stock</span></div>
+        <div><strong>7</strong><span>Checked out</span></div>
+        <div><strong>2</strong><span>Overdue</span></div>
+      </div>
+
+      <div class="subnav" role="tablist" aria-label="Staff screens">
+        <button class="subnav-button is-active" role="tab" aria-selected="true" data-panel="inventory">Inventory</button>
+        <button class="subnav-button" role="tab" aria-selected="false" data-panel="checked-out">Checked out</button>
+      </div>
+
+      <section id="inventory" class="panel is-visible" aria-labelledby="inventory-heading">
+        <div class="panel-head"><div><h2 id="inventory-heading">All inventory</h2><p>Sample merchandise and equipment.</p></div><label class="search"><span>Search</span><input id="inventory-search" type="search" placeholder="SKU or item"></label></div>
+        <div class="table-wrap"><table><thead><tr><th>SKU</th><th>Item</th><th>Category</th><th>Available</th><th>Replacement</th></tr></thead><tbody id="inventory-body">
+          <tr><td data-label="SKU"><code>HO-101</code></td><td data-label="Item"><strong>Classic Husky Hoodie</strong></td><td data-label="Category">Apparel</td><td data-label="Available"><span class="status status--ok">12 in stock</span></td><td data-label="Replacement">$68</td></tr>
+          <tr><td data-label="SKU"><code>HO-118</code></td><td data-label="Item"><strong>Campus Rain Shell</strong></td><td data-label="Category">Outerwear</td><td data-label="Available"><span class="status status--low">3 in stock</span></td><td data-label="Replacement">$96</td></tr>
+          <tr><td data-label="SKU"><code>HO-204</code></td><td data-label="Item"><strong>Purple Logo Cap</strong></td><td data-label="Category">Accessories</td><td data-label="Available"><span class="status status--ok">18 in stock</span></td><td data-label="Replacement">$32</td></tr>
+          <tr><td data-label="SKU"><code>EQ-310</code></td><td data-label="Item"><strong>Stadium Blanket</strong></td><td data-label="Category">Equipment</td><td data-label="Available"><span class="status status--low">2 in stock</span></td><td data-label="Replacement">$42</td></tr>
+          <tr><td data-label="SKU"><code>EQ-422</code></td><td data-label="Item"><strong>Daypack</strong></td><td data-label="Category">Equipment</td><td data-label="Available"><span class="status status--ok">7 in stock</span></td><td data-label="Replacement">$54</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="checked-out" class="panel" aria-labelledby="checked-heading">
+        <div class="panel-head"><div><h2 id="checked-heading">Items away from the shop</h2><p>Every open checkout, tied to a Husky Card.</p></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Student</th><th>Card ID</th><th>Item</th><th>Due</th><th>Status</th></tr></thead><tbody>
+          <tr><td data-label="Student"><strong>Maya Chen</strong></td><td data-label="Card ID"><code>8•••2741</code></td><td data-label="Item">Stadium Blanket</td><td data-label="Due">Sep 19</td><td data-label="Status"><span class="status status--overdue">9 days overdue · $42</span></td></tr>
+          <tr><td data-label="Student"><strong>Jordan Lee</strong></td><td data-label="Card ID"><code>8•••6018</code></td><td data-label="Item">Campus Rain Shell</td><td data-label="Due">Sep 26</td><td data-label="Status"><span class="status status--due">Due soon</span></td></tr>
+          <tr><td data-label="Student"><strong>Sam Rivera</strong></td><td data-label="Card ID"><code>8•••4490</code></td><td data-label="Item">Daypack</td><td data-label="Due">Sep 18</td><td data-label="Status"><span class="status status--overdue">10 days overdue · $54</span></td></tr>
+        </tbody></table></div>
+      </section>
+    </section>
+
+    <section id="student-view" class="view" aria-labelledby="student-title">
+      <header class="page-head student-head"><div><p class="context">My Husky Outfitters</p><h1 id="student-title">Your borrowed items.</h1><p class="lede">Maya Chen · Husky Card 8•••2741</p></div><span class="demo-pill">Demo student</span></header>
+      <div class="student-layout">
+        <section class="checkout-list" aria-labelledby="pending-title"><div class="panel-head"><div><h2 id="pending-title">Pending checkouts</h2><p>Return items at Husky Outfitters.</p></div></div>
+          <article class="checkout-card checkout-card--overdue"><div><code>EQ-310</code><h3>Stadium Blanket</h3><p>Due September 19</p></div><div class="checkout-state"><strong>9 days overdue</strong><span>Replacement charge applied</span></div></article>
+          <article class="checkout-card"><div><code>HO-118</code><h3>Campus Rain Shell</h3><p>Due October 2</p></div><div class="checkout-state"><strong>4 days left</strong><span>No balance due</span></div></article>
+        </section>
+        <aside class="balance-card"><p>Balance due</p><strong class="balance">$42.00</strong><span>Full replacement price</span><hr><p class="policy">An item’s full replacement price is charged after it is seven days overdue.</p><dl><div><dt>Stadium Blanket</dt><dd>$42.00</dd></div><div><dt>Rain Shell</dt><dd>$0.00</dd></div></dl></aside>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="checkout-dialog"><form method="dialog"><div class="dialog-head"><div><p class="context">Mock checkout</p><h2>Scan card, add item.</h2></div><button class="icon-button" value="cancel" aria-label="Close checkout">×</button></div><label>Husky Card ID<input type="text" placeholder="Scan or enter card ID"></label><label>Item SKU<input type="text" placeholder="HO-101"></label><div class="dialog-actions"><button class="button" value="cancel">Cancel</button><button class="button button--primary" value="confirm">Review checkout</button></div></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
